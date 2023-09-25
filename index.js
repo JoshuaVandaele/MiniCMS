@@ -3,6 +3,9 @@ const express = require('express');
 const morgan = require('morgan');
 const ejs = require('ejs');
 
+//Affichage du logo dans les logs
+require('./modules/initLogs.js')();
+
 // Créer une instance d'Express
 const app = express();
 
