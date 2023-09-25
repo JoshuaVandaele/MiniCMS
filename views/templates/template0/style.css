@@ -35,19 +35,22 @@ p {
     font-size: 32px;
 }
 
-/* Red button using <a> aligned to the right side of the screen */
-a {
+.a_button {
     background-color: #FF0000;
     color: white;
     text-align: center;
-    padding: 8px;
-    padding-left: 64px;
-    padding-right: 64px;
     text-decoration: none;
     font-size: 32px;
     font-weight: bolder;
+    border-radius: 90px;
+    text-transform: uppercase;
+}
+
+#next {
+    padding: 8px;
+    padding-left: 64px;
+    padding-right: 64px;
     float: right;
     margin-right: 8px;
     margin-bottom: 8px;
-    border-radius: 90px;
 }
