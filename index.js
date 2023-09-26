@@ -27,6 +27,11 @@ app.get('/', (req, res) => {
   res.render('index.ejs', { title: 'Mon Serveur Express' });
 });
 
+app.get('/:pageID', (req, res) => {
+  const content = getPageContent(parseInt(req.params.pageID, 10))
+  res.render('index.ejs', { content:content });
+});
+
 // Démarrer le serveur sur le port 3000
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, '0.0.0.0', () => {
