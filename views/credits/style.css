@@ -1,0 +1,52 @@
+/* Reset default margin and padding for the body element */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set a background color for the whole page */
+body {
+    background-color: #00757c;
+}
+
+/* Style the logos div */
+#logos {
+    position: relative;
+    padding-bottom: 20px;
+    border-bottom-right-radius: 55%;
+    background-color: #FFF;
+    width: 20%;
+    padding-left: 5%;
+    /* Adjust this value to control the rounded corner */
+}
+
+#logo_iut,
+#logo_jrcandev {
+    display: block;
+    width: 72%;
+    height: auto;
+}
+
+/* Style the container */
+#container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 100px 20px 100px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    /* Semi-transparent black background */
+    color: white;
+}
+
+/* Back a button */
+#back {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    /* Semi-transparent black background */
+    color: white;
+    text-decoration: none;
+}
