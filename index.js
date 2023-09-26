@@ -28,8 +28,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/:pageID', (req, res) => {
-  const content = getPageContent(parseInt(req.params.pageID, 10))
-  res.render('index.ejs', { content:content });
+  const page = getPageContent(parseInt(req.params.pageID, 10));
+  console.log(page);
+  res.render('temp.ejs', { page:page });
 });
 
 // Démarrer le serveur sur le port 3000

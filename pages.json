@@ -1,0 +1,14 @@
+{
+  "pages": [
+    {
+      "template": "default",
+      "content": {
+        "title": "Titre",
+        "text": "Texte",
+        "next": 1,
+        "background": "image.png",
+        "video": "yes.mp4"
+      }
+    }
+  ]
+}
