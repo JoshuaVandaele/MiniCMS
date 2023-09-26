@@ -3,6 +3,8 @@ const express = require('express');
 const morgan = require('morgan');
 const ejs = require('ejs');
 
+const getPageContent = require('./modules/jsonToPage.js');
+
 //Affichage du logo dans les logs
 require('./modules/initLogs.js')();
 
