@@ -3,6 +3,8 @@ const express = require('express');
 const morgan = require('morgan');
 const ejs = require('ejs');
 
+const getPageContent = require('./modules/jsonToPage.js');
+
 //Affichage du logo dans les logs
 require('./modules/initLogs.js')();
 
@@ -23,6 +25,11 @@ app.use(express.static("views/static/"));
 app.get('/', (req, res) => {
   // Utiliser EJS pour rendre une vue (par exemple, views/index.ejs)
   res.render('index.ejs', { title: 'Mon Serveur Express' });
+});
+
+app.get('/:pageID', (req, res) => {
+  const content = getPageContent(parseInt(req.params.pageID, 10))
+  res.render('index.ejs', { content:content });
 });
 
 // Démarrer le serveur sur le port 3000
