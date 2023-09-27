@@ -1,44 +1,50 @@
-/* Reset default margin and padding for the body element */
 body {
     margin: 0;
     padding: 0;
-}
-
-/* Set a background color for the whole page */
-body {
     background-color: #00757c;
 }
 
-/* Style the logos div */
-#logos {
-    position: relative;
-    padding-bottom: 20px;
-    border-bottom-right-radius: 55%;
+#top-left-corner {
+    position: absolute;
+    border-bottom-right-radius: 100%;
     background-color: #FFF;
-    width: 20%;
-    padding-left: 5%;
-    /* Adjust this value to control the rounded corner */
+    width: 250px;
+    height: 250px;
+    left: 0px; top: 0px;
 }
 
-#logo_iut,
-#logo_jrcandev {
+#bottom-right-corner {
+    position: absolute;
+    border-top-left-radius: 100%;
+    background-color: #FFF;
+    width: 250px;
+    height: 250px;
+    right: 0px; bottom: 0px;
+}
+
+#logo_iut {
     display: block;
-    width: 72%;
+    width: 83%;
     height: auto;
 }
+#logo_jrcandev {
+    display: block;
+    width: 90%;
+    height: auto;
+    margin-top: 70%;
+    margin-left: 7%;
+}
 
-/* Style the container */
 #container {
-    max-width: 800px;
-    margin: 0 auto;
+    margin: auto;
+    width: 50%;
     padding: 20px 100px 20px 100px;
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.2);
-    /* Semi-transparent black background */
     color: white;
+    transform: translate(0, 25%);
 }
 
-/* Back a button */
 #back {
     position: absolute;
     bottom: 20px;
@@ -46,7 +52,6 @@ body {
     padding: 10px;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.2);
-    /* Semi-transparent black background */
     color: white;
     text-decoration: none;
 }
