@@ -3,10 +3,11 @@ const express = require('express');
 const morgan = require('morgan');
 const ejs = require('ejs');
 
-const getPageContent = require('./modules/jsonToPage.js');
-
 //Affichage du logo dans les logs
 require('./modules/initLogs.js')();
+
+//Controlleur
+const backEndController = require('./modules/backEndController.js');
 
 // Créer une instance d'Express
 const app = express();
@@ -28,9 +29,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/:pageID', (req, res) => {
-  const page = getPageContent(parseInt(req.params.pageID, 10));
-  console.log(page);
-  res.render('temp.ejs', { page:page });
+  backEndController(req, res, parseInt(req.params.pageID, 10));//Everything is managed there
 });
 
 // Démarrer le serveur sur le port 3000
