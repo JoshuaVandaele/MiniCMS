@@ -1,7 +1,7 @@
 {
   "pages": [
     {
-      "template": "default",
+      "template": "home_page",
       "content": {
         "title": "Titre",
         "text": "Texte",

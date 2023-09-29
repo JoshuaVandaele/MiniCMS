@@ -2,6 +2,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const ejs = require('ejs');
+const path = require('path');
 
 //Affichage du logo dans les logs
 require('./modules/initLogs.js')();
@@ -24,12 +25,26 @@ app.use(morgan('dev'));
 app.use(express.static("views/static/"));
 
 app.get('/', (req, res) => {
-  // Utiliser EJS pour rendre une vue (par exemple, views/index.ejs)
-  res.render('index.ejs', { title: 'Mon Serveur Express' });
+  backEndController(req, res, 0);
 });
 
 app.get('/:pageID', (req, res) => {
   backEndController(req, res, parseInt(req.params.pageID, 10));//Everything is managed there
+});
+
+app.get('/img/:template/:imgName', (req, res) => {
+  const { template, imgName } = req.params;
+
+  if( !( /^(?!.*\.\.)[a-zA-Z0-9.\-_]{1,64}$/.test(template) && /^(?!.*\.\.)[a-zA-Z0-9.\-_]{1,64}$/.test(imgName) ) ){
+    res.status(404).render('404.ejs');
+    return;
+  }
+
+  const imagePath = path.join(__dirname, 'views', template, 'img', imgName);
+
+  //Send picture
+  //TODO : Add 404
+  res.sendFile(imagePath);
 });
 
 // Démarrer le serveur sur le port 3000

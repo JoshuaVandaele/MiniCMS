@@ -11,7 +11,7 @@ module.exports = async(req, res, pageID)=>{
     const pageContent = getPageContent(pageID);
     if(! pageContent)throw('not found!');
 
-    res.render('temp.ejs', { page:pageContent });
+    res.render(pageContent.template+'/index.ejs', { page:pageContent });
   }catch{
     //Error with getPageContent... Is pageID invalid ? Let's send a 404
     res.status(404).render('404.ejs');
