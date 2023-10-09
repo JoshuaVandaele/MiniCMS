@@ -1,9 +1,9 @@
-*{
+body {
     margin: 0;
     background-color: #00757c;
 }
 
-.logo{
+.logo {
     width: 180px;
     height: 117px;
     top: 8px;
@@ -11,7 +11,7 @@
     position: absolute;
 }
 
-.navbar ul{
+.navbar ul {
     list-style: none;
     text-align: center;
     padding: 0;
@@ -20,13 +20,13 @@
     margin-bottom: 2%;
 }
 
-.navbar ul li{
+.navbar ul li {
     display: inline-block;
     margin-left: 10px;
     margin-right: 10px;
 }
 
-.navbar ul li input{
+.navbar ul li input {
     width: 210;
     height: 80;
     border-radius: 20PX;
@@ -37,19 +37,21 @@
     color: white;
 }
 
-.navbar ul li input:hover{
+.navbar ul li input:hover {
     background-color: #094549;
 }
 
-#frame{
+#frame {
     position: relative;
     background-color: white;
     width: 90%;
     height: 75%;
     margin: 0 auto;
+    overflow: scroll
 }
 
-.add_button{
+#add_button {
+    background-color: #00757c;
     position: absolute;
     height: 70px;
     width: 70px;
@@ -57,10 +59,31 @@
     border: none;
     color: white;
     font-size: 60px;
-    bottom: 10;
-    right: 10;
+    bottom: 80px;
+    right: 120px;
 }
 
-.add_button:hover{
+#add_button:hover {
     background-color: #094549;
+}
+
+.template {
+    position: relative;
+    width: 200px;
+    height: 120px;
+    border-radius: 20px;
+    margin: 10px;
+    display: inline-block;
+}
+
+.template img {
+    width: 192px;
+    height: 108px;
+    border-radius: 20px;
+}
+
+.template p {
+    color: black;
+    text-align: center;
+    margin: 8px;
 }
