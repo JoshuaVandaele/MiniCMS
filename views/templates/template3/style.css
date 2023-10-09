@@ -52,6 +52,15 @@ p {
     margin-bottom: 8px;
 }
 
+#prev {
+    padding: 8px;
+    padding-left: 64px;
+    padding-right: 64px;
+    float: right;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
 #play {
     padding: 8px;
     padding-left: 64px;
