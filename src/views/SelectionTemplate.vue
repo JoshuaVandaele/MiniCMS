@@ -1,20 +1,21 @@
 <template>
     <div id="template-picker">
-            <div id="template-picker-topbar">
-                <router-link to="/selection" id="template-picker-close-button">X</router-link>
-            </div>
-            <div  id="template-picker-scrollarea">
-                <div v-for="item in liste" id="template">
-                    <img v-bind:src="item.img">
-                </div>
+        <div id="template-picker-topbar">
+            <router-link to="/selection" id="template-picker-close-button">X</router-link>
+        </div>
+        <div id="template-picker-scrollarea">
+            <div v-for="item in liste" id="template">
+                <img v-bind:src="item.img">
             </div>
         </div>
+    </div>
 </template>
 
 <style scoped>
 body {
     background: black;
 }
+
 #template {
     position: relative;
     width: 200px;
@@ -59,7 +60,7 @@ body {
     width: 80%;
     height: auto;
     margin: 10px;
-    display:grid;
+    display: grid;
 }
 
 #template-picker-close-button {
@@ -131,7 +132,7 @@ export default {
                 modele: "10",
                 titre: "titre10"
             }
-        ]
+            ]
         }
     },
 }

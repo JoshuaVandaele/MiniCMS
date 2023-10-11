@@ -1,19 +1,20 @@
 <template>
-  <div class="accueil">
-    <img src="../assets/img/photo-montage-calais-boulogne-2021-4.png">
-    <span class="dot">
-      <img src="../assets/img/logo-port-boulogne-calais.jpg" class="logo"/>
-      <img src="../assets/img/portboulognecalais-logo-homepage.png" class="slogan"/>
-    </span>
+    <div class="accueil">
+        <img src="../assets/img/photo-montage-calais-boulogne-2021-4.png">
+        <span class="dot">
+            <img src="../assets/img/logo-port-boulogne-calais.jpg" class="logo" />
+            <img src="../assets/img/portboulognecalais-logo-homepage.png" class="slogan" />
+        </span>
 
-    <div id = "buttons">
-        <input type="button" value="Add Template" @click="$router.push('/selection')">
-        <input type="button" value="Charger" @click="$router.push('/selection-template')">
+        <div id="buttons">
+            <input type="button" value="Add Template" @click="$router.push('/selection')">
+            <input type="button" value="Charger" @click="$router.push('/selection-template')">
+        </div>
     </div>
-  </div>
 </template>
 <style scoped>
-html, body {
+html,
+body {
     background-color: #00757c;
     height: 100%;
     width: 100%;
@@ -22,7 +23,7 @@ html, body {
 }
 
 .accueil {
-  width: 100%;
+    width: 100%;
 }
 
 img {
@@ -42,13 +43,13 @@ img {
     text-align: center;
 }
 
-.dot .logo{
+.dot .logo {
     height: 40%;
     width: auto;
     transform: translate(0%, 40%);
 }
 
-.dot .slogan{
+.dot .slogan {
     height: 20%;
     transform: translate(0%, 90%);
 }

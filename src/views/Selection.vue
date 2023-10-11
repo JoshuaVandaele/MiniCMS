@@ -174,7 +174,7 @@ export default {
                 modele: "10",
                 titre: "titre10"
             }
-        ]
+            ]
         }
     },
 }
