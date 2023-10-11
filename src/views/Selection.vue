@@ -1,5 +1,15 @@
 <template>
     <div>
+        <img src="../assets/img/logo-port-boulogne-calais.jpg" class="logo">
+        <div class="navbar">
+            <ul>
+                <li><input type="button" value="Save"></li>
+                <li><input type="button" value="Load"></li>
+                <li><input type="button" value="Export"></li>
+                <li><input type="button" value="Option"></li>
+                <li><input type="button" value="Preview"></li>
+            </ul>
+        </div>
         <div id="frame">
             <div v-for="item in liste" class="template">
                 <img v-bind:src="item.img">
@@ -8,7 +18,7 @@
                 </p>
             </div>
         </div>
-        <router-link to="/" id="add_button">+</router-link>
+        <router-link to="/selection-template" id="add_button">+</router-link>
     </div>
 </template>
 <style scoped>
@@ -41,9 +51,9 @@ body {
 }
 
 .navbar ul li input {
-    width: 210;
-    height: 80;
-    border-radius: 20PX;
+    width: 210px;
+    height: 80px;
+    border-radius: 20px;
     background-color: #0C6165;
     position: relative;
     border: none;
@@ -78,6 +88,9 @@ body {
     font-size: 60px;
     bottom: 80px;
     right: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #add_button:hover {
@@ -128,8 +141,38 @@ export default {
             },
             {
                 img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "2",
+                modele: "4",
                 titre: "titre4"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "5",
+                titre: "titre5"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "6",
+                titre: "titre6"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "7",
+                titre: "titre7"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "8",
+                titre: "titre8"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "9",
+                titre: "titre9"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "10",
+                titre: "titre10"
             }
         ]
         }

@@ -7,8 +7,8 @@
     </span>
 
     <div id = "buttons">
-        <router-link to="/selection">add template</router-link>
-        <input type = "button" value = "Charger">
+        <input type="button" value="Add Template" @click="$router.push('/selection')">
+        <input type="button" value="Charger" @click="$router.push('/selection-template')">
     </div>
   </div>
 </template>
