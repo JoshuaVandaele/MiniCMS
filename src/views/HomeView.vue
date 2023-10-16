@@ -8,7 +8,7 @@
 
         <div id="buttons">
             <input type="button" value="Nouveau Projet" @click="$router.push('/selection')">
-            <input type="button" value="Ouvrir Projet" @click="$router.push('/selection-template')">
+            <input type="button" value="Ouvrir projet" @click="$router.push('/selection')">
         </div>
     </div>
 </template>
