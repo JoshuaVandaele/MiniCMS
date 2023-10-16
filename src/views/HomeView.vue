@@ -70,6 +70,8 @@ img {
     margin-top: 7%;
     margin-left: 2%;
     margin-right: 2%;
+    padding: 16px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #buttons input:hover {
