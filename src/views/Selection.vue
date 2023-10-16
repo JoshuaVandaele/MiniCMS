@@ -69,7 +69,7 @@ body {
     position: relative;
     background-color: white;
     width: 90%;
-    height: 75%;
+    height: 75vh;
     margin: 0 auto;
     overflow: scroll
 }
