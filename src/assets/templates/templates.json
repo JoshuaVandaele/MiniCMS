@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "content": {
+      "title": "textbox",
+      "text": {
+        "fr": "textarea",
+        "en": "textarea"
+      },
+      "background": "img",
+      "next": "number"
+    }
+  },
+  {
+    "id": 2,
+    "content": {
+      "background": "img",
+      "next": "number"
+    }
+  }
+]

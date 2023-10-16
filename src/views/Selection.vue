@@ -1,6 +1,7 @@
 <template>
     <div>
         <img src="../assets/img/logo-port-boulogne-calais.jpg" class="logo">
+
         <div class="navbar">
             <ul>
                 <li><input type="button" value="Save"></li>
@@ -10,6 +11,7 @@
                 <li><input type="button" value="Preview"></li>
             </ul>
         </div>
+
         <div id="frame">
             <div v-for="item in liste" class="template">
                 <img v-bind:src="item.img">
@@ -18,10 +20,12 @@
                 </p>
             </div>
         </div>
+
         <router-link to="/selection-template" id="add_button">+</router-link>
     </div>
 </template>
 <style scoped>
+
 body {
     margin: 0;
     background-color: #00757c;
@@ -71,7 +75,7 @@ body {
     width: 90%;
     height: 75%;
     margin: 0 auto;
-    overflow: scroll
+    overflow: scroll;
 }
 
 #add_button {
@@ -173,7 +177,92 @@ export default {
                 img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
                 modele: "10",
                 titre: "titre10"
-            }
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "10",
+                titre: "titre10"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "10",
+                titre: "titre10"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "10",
+                titre: "titre10"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "10",
+                titre: "titre10"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "10",
+                titre: "titre10"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "10",
+                titre: "titre10"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "10",
+                titre: "titre10"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "10",
+                titre: "titre10"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "10",
+                titre: "titre10"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "10",
+                titre: "titre10"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "10",
+                titre: "titre10"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "10",
+                titre: "titre10"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "10",
+                titre: "titre10"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "10",
+                titre: "titre10"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "10",
+                titre: "titre10"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "10",
+                titre: "titre10"
+            },
+            {
+                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
+                modele: "10",
+                titre: "titre10"
+            },
             ]
         }
     },
