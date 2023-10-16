@@ -13,7 +13,7 @@
             </ul>
         </div>
         <div id="frame">
-            <div v-for="item in liste" class="template">
+            <div v-for="item in liste" class="template" @click="redirect(item.modele)">
                 <img v-bind:src="item.img">
                 <p>
                     {{ item.titre }}
@@ -176,5 +176,11 @@ export default {
             ]
         }
     },
+    methods: {
+      redirect(model){
+        //Function used to redirect the user to the model managing page
+        window.location.href = '/edit-template/'+model; //https://stackoverflow.com/questions/35664550/vue-js-redirection-to-another-page
+      }
+    }
 }
 </script>
