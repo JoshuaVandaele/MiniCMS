@@ -1,6 +1,8 @@
 <template>
     <div>
-        <img src="../assets/img/logo-port-boulogne-calais.jpg" class="logo">
+        <a href="/">
+            <img src="../assets/img/logo-port-boulogne-calais.jpg" class="logo">
+        </a>
         <div class="navbar">
             <ul>
                 <li><input type="button" value="Save"></li>
@@ -17,8 +19,8 @@
                     {{ item.titre }}
                 </p>
             </div>
+            <router-link to="/selection-template" id="add_button">+</router-link>
         </div>
-        <router-link to="/selection-template" id="add_button">+</router-link>
     </div>
 </template>
 <style scoped>
@@ -78,19 +80,16 @@ body {
     background-color: #00757c;
     position: absolute;
     text-decoration: none;
-    text-align: center;
-    margin: 0 auto;
     height: 70px;
     width: 70px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 58px;
     border-radius: 25%;
-    border: none;
     color: white;
     font-size: 60px;
-    bottom: 80px;
-    right: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    bottom: 3%;
+    right: 1%;
 }
 
 #add_button:hover {
