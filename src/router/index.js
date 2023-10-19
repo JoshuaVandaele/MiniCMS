@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import Selection from '../views/Selection.vue'
 import SelectionTemplate from '../views/SelectionTemplate.vue'
 import EditTemplate from '../views/EditTemplate.vue'
+import Template_3 from '../views/template/Template_3.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,7 +28,7 @@ const router = createRouter({
       path: '/edit-template/:id',
       name: 'edit-template',
       component: EditTemplate
-    }
+    },
   ]
 })
 

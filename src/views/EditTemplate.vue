@@ -17,6 +17,7 @@
 
             <div v-if="content == 'img'"><input type="file" accept="image/png, image/jpeg"></div>
         </div>
+        <input type="submit" value="Sauvegarder" @click="saveData">
     </div>
 
 </template>
@@ -24,12 +25,31 @@
 
 <script>
 import json_load from '../assets/templates/templates.json';
+import fs from 'fs';
 export default {
-    // This page needs to load the template from the database and display it on the page, and then allow the user to edit it.
     data() {
         return {
             myJson: json_load,
         };
+    },
+
+    methods: {
+        saveData() {
+            const dataToSave = JSON.stringify(this.myJson);
+            fs.writeFile('data.json', dataToSave, (err) => {
+                if (err) throw err;
+                console.log('Data saved to file');
+            });
+        },
+
+        handleFileUpload(event, item) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = () => {
+            item.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+    },
     },
 
     computed: {
