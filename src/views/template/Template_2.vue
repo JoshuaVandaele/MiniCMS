@@ -3,8 +3,8 @@
         <h1></h1>
         <p></p>
         <a class="a_button" id="next">></a>
-        <a class="a_button" id="prev">&lt</a>
-        <a class="a_button" id="play" href="https://youtu.be/dQw4w9WgXcQ?si=_2qBYXwW7meJZdLO">&#9654; Jouer</a>
+        <a class="a_button" id="prev">&lt;</a>
+        <a class="a_button" id="play" href="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4">&#9654; Jouer</a>
     </div>
 </template>
 
