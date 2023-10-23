@@ -130,7 +130,11 @@ export default {
     methods: {
         redirect(model) {
             //Function used to redirect the user to the model managing page
-            window.location.href = '/edit-page/' + model; //https://stackoverflow.com/questions/35664550/vue-js-redirection-to-another-page
+            window.location.href = '/edit-page/' + model;//https://stackoverflow.com/questions/35664550/vue-js-redirection-to-another-page
+        },
+        imageOnError(event) {
+            // Définit l'URL de l'image de secours
+            event.target.src = 'https://fakeimg.pl/350x200/ff1234,128/000,255/?text=Pas de prévisualisation';
         }
     }
 }

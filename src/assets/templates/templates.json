@@ -11,7 +11,7 @@
         "fr": "Texte",
         "en": "Text"
       },
-      "background": "logo-port-boulogne-calais.jpg",
+      "background": "photo-montage-calais-boulogne-2021-4.png",
       "next": 2
     }
   },
@@ -20,8 +20,20 @@
     "id": 2,
     "template_id": 1,
     "content": {
-      "background": "logo-port-boulogne-calais.jpg",
-      "next": 1
+      "background": "photo-montage-calais-boulogne-2021-4.png",
+      "next": 3,
+      "previous": 1
+    }
+  },
+
+  {
+    "id": 3,
+    "template_id": 3,
+    "content": {
+      "title": "test video",
+      "text": "test du lecteur video",
+      "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "previous": 2
     }
   }
 ]

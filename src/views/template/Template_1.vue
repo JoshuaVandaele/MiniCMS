@@ -1,9 +1,24 @@
 <template>
     <div id="container">
-        <a class="a_button" id="next">></a>
-        <a class="a_button" id="prev"   >&lt</a>
+        <a class="a_button" id="prev" :href="data.content.next" v-if="data.content.next">></a>
+            <a class="a_button" id="prev" :href="data.content.previous" v-if="data.content.previous">&lt;</a>
     </div>
 </template>
+
+<script>
+export default {
+    props: {
+        data: {
+            type: Object,
+            required: true,
+        },
+    },
+
+    mounted () {
+        document.body.style.backgroundImage = 'url("/src/assets/img/' + this.data.content.background +'")';
+    }
+};
+</script>
 
 <style>
 body {
@@ -12,10 +27,10 @@ body {
     background-color: #fff;
     margin: 0;
     padding: 0;
-    background-image: url("https://i0.wp.com/formation.genie-ecologique.fr/wp-content/uploads/2022/09/placeholder.png?ssl=1");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: 100% ;
 }
 
 #container {

@@ -1,14 +1,14 @@
 <template>
     <video>
-        <source src="https://youtu.be/dQw4w9WgXcQ?si=_2qBYXwW7meJZdLO" type="video/mp4">
+        <source :src="data.content.video" type="video/mp4" class="video-transition">
         Your browser does not support the video tag.
     </video>
     <div id="container">
-        <h1></h1>
-        <p></p>
-        <a class="a_button" id="next">></a>
-        <a class="a_button" id="prev">&lt</a>
-        <a class="a_button" id="play" onclick="playVideo()">&#9654; Lecture</a>
+        <h1>{{ data.content.title }}</h1>
+        <p>{{ data.content.text }}</p>
+        <a class="a_button" id="prev" :href="data.content.next" v-if="data.content.next">></a>
+        <a class="a_button" id="prev" :href="data.content.previous" v-if="data.content.previous">&lt;</a>
+        <a class="a_button" id="play" @click="playVideo">&#9654; Lecture</a>
     </div>
     <div id="background-blur"></div>
 </template>
@@ -57,6 +57,7 @@ p {
     font-weight: bolder;
     border-radius: 90px;
     text-transform: uppercase;
+    cursor: pointer;
 }
 
 #next {
@@ -108,47 +109,85 @@ video {
     opacity: 0;
     transition: opacity 0.5s linear, visibility 0.5s linear;
 }
+
+.video-transition {
+    transition: all 0.5s ease-in-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
 </style>
 
 <script>
-const firstVideoElement = document.querySelector("video");
-const playButton = document.getElementById('play');
-const backgroundBlur = document.getElementById('background-blur');
+export default {
+    props: {
+        data: {
+            type: Object,
+            required: true,
+        },
+    },
 
-// Function to start playing the video and to blur the background
-function playVideo(videoElement) {
-    videoElement.play();
-    videoElement.controls = true;
-    backgroundBlur.style.visibility = 'visible';
-    backgroundBlur.style.opacity = '1';
-    videoElement.style.zIndex = '1';
-}
+    mounted () {
+        this.firstVideoElement = document.querySelector("video");
+        this.playButton = document.getElementById('play');
+        this.backgroundBlur = document.getElementById('background-blur');
 
-function stopVideo(videoElement) {
-    videoElement.pause();
-    videoElement.controls = false;
-    videoElement.currentTime = 0;
+        this.playButton.addEventListener('click', function () {
+            this.playVideo(this.firstVideoElement)
+        });
 
-    backgroundBlur.style.visibility = 'hidden';
-    backgroundBlur.style.opacity = '0';
-    videoElement.style.zIndex = '0';
+        this.firstVideoElement.addEventListener('click', function () {
+            this.stopVideo(this.firstVideoElement)
+        });
 
-}
+        this.backgroundBlur.addEventListener('click', function () {
+            this.stopVideo(this.firstVideoElement)
+        });
 
-// Add a click event listener to the button
-playButton.addEventListener('click', function () {
-    playVideo(firstVideoElement)
-});
+        this.firstVideoElement.addEventListener('ended', function () {
+            this.stopVideo(this.firstVideoElement)
+        });
 
-firstVideoElement.addEventListener('click', function () {
-    stopVideo(firstVideoElement)
-});
+        this.backgroundBlur.addEventListener('click', this.closeVideo);
 
-backgroundBlur.addEventListener('click', function () {
-    stopVideo(firstVideoElement)
-});
+    },
 
-firstVideoElement.addEventListener('ended', function () {
-    stopVideo(firstVideoElement)
-});
+    methods: {
+        playVideo() {
+            this.firstVideoElement.controls = true;
+            this.backgroundBlur.style.visibility = 'visible';
+            this.backgroundBlur.style.opacity = '1';
+            this.firstVideoElement.style.zIndex = '2';
+        },
+
+        stopVideo() {
+            this.firstVideoElement.pause();
+            this.firstVideoElement.controls = false;
+            this.firstVideoElement.currentTime = 0;
+
+            this.backgroundBlur.style.visibility = 'hidden';
+            this.backgroundBlur.style.opacity = '0';
+            this.firstVideoElement.style.zIndex = '1';
+
+            this.firstVideoElement.classList.remove('video-transition');
+            this.firstVideoElement.style.zIndex = '-1';
+
+        },
+
+        closeVideo() {
+            this.stopVideo();
+        },
+    },
+
+    data() {
+        return {
+            firstVideoElement: null,
+            playButton: null,
+            backgroundBlur: null,
+        };
+    }
+};
 </script>

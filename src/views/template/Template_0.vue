@@ -1,16 +1,10 @@
 <template>
-    <div :style="{
-        'background-image': 'url(../src/assets/img/' + data.content.background,
-        'width: 100%',
-        'height: 100%',
-    }">
         <div id="container">
             <h1>{{ data.content.title }}</h1>
             <p>{{ data.content.text.fr }}</p>
-            <a class="a_button" id="next" href="{{ data.content.next }}">></a>
-            <a class="a_button" id="prev" href="">&lt;</a>
+            <a class="a_button" id="prev" :href="data.content.next" v-if="data.content.next">></a>
+            <a class="a_button" id="prev" :href="data.content.previous" v-if="data.content.previous">&lt;</a>
         </div>
-    </div>
 </template>
 
 <script>
@@ -21,12 +15,16 @@ export default {
             required: true,
         },
     },
+
+    mounted () {
+        document.body.style.backgroundImage = 'url("/src/assets/img/' + this.data.content.background +'")';
+    }
 };
 </script>
 
 
 <style>
-#bg {
+body {
     width: 100%;
     height: 100%;
     background-color: #fff;
@@ -35,6 +33,7 @@ export default {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: 100% 100%;
 }
 
 #container {
