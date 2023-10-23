@@ -18,7 +18,8 @@
     "template_id": 1,
     "content": {
       "background": "photo-montage-calais-boulogne-2021-4.png",
-      "next": 1
+      "next": 3,
+      "previous": 1
     }
   },
 
@@ -29,7 +30,7 @@
       "title": "test video",
       "text": "test du lecteur video",
       "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-      "next": 1
+      "previous": 2
     }
   }
 ]

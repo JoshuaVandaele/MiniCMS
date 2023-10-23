@@ -1,7 +1,7 @@
 <template>
     <div id="container">
-        <a class="a_button" id="next">></a>
-        <a class="a_button" id="prev"   >&lt;</a>
+        <a class="a_button" id="prev" :href="data.content.next" v-if="data.content.next">></a>
+            <a class="a_button" id="prev" :href="data.content.previous" v-if="data.content.previous">&lt;</a>
     </div>
 </template>
 

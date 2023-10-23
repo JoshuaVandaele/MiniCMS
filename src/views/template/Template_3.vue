@@ -6,8 +6,8 @@
     <div id="container">
         <h1>{{ data.content.title }}</h1>
         <p>{{ data.content.text }}</p>
-        <a class="a_button" id="next">></a>
-        <a class="a_button" id="prev">&lt;</a>
+        <a class="a_button" id="prev" :href="data.content.next" v-if="data.content.next">></a>
+        <a class="a_button" id="prev" :href="data.content.previous" v-if="data.content.previous">&lt;</a>
         <a class="a_button" id="play" @click="playVideo">&#9654; Lecture</a>
     </div>
     <div id="background-blur"></div>
