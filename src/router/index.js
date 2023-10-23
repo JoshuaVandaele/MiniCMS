@@ -2,8 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Selection from '../views/Selection.vue'
 import SelectionTemplate from '../views/SelectionTemplate.vue'
-import EditTemplate from '../views/EditTemplate.vue'
+import EditPage from '../views/EditPage.vue'
 import TemplateViewer from '../views/TemplateViewer.vue'
+import CreatePage from '../views/CreatePage.vue'
 
 
 const router = createRouter({
@@ -25,15 +26,20 @@ const router = createRouter({
       component: SelectionTemplate
     },
     {
-      path: '/edit-template/:id',
-      name: 'edit-template',
-      component: EditTemplate
+      path: '/edit-page/:pageID',
+      name: 'edit-page',
+      component: EditPage
     },
     {
       path: '/template-viewer/:id',
       name: 'template-viewer',
       component: TemplateViewer
     },
+    {
+      path: '/create-page/:templateID',
+      name: 'create-page',
+      component: CreatePage
+    }
   ]
 })
 

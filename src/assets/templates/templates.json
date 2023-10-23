@@ -3,10 +3,13 @@
     "id": 1,
     "template_id": 0,
     "content": {
-      "title": "Titre1",
+      "title": {
+        "fr": "Titre",
+        "en": "Title"
+      },
       "text": {
-        "fr": "fr1",
-        "en": "en1"
+        "fr": "Texte",
+        "en": "Text"
       },
       "background": "logo-port-boulogne-calais.jpg",
       "next": 2

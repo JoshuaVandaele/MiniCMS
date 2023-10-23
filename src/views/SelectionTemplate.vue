@@ -5,7 +5,7 @@
         </div>
         <div id="template-picker-scrollarea">
             <div v-for="item in liste" id="template">
-                <img v-bind:src="item.img">
+                <img v-bind:src="item.img" @click="redirect(liste.indexOf(item))">
             </div>
         </div>
     </div>
@@ -135,5 +135,10 @@ export default {
             ]
         }
     },
+    methods: {
+        redirect(index) {
+            this.$router.push('/create-page/' + index);
+        }
+    }
 }
 </script>

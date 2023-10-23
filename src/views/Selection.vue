@@ -15,16 +15,15 @@
         </div>
 
         <div id="frame">
-            <div v-for="item in liste" class="template" @click="redirect(item.modele)">
-                <img v-bind:src="item.img">
-                <p>
-                    {{ item.titre }}
-                </p>
+            <div v-for="page in pages" class="template" @click="redirect(pages.indexOf(page))">
+                <img src="https://fakeimg.pl/350x200/ff0000,128/000,255">
+                <p>"Titre"</p>
             </div>
             <router-link to="/selection-template" id="add_button">+</router-link>
         </div>
     </div>
 </template>
+
 <style scoped>
 body {
     margin: 0;
@@ -125,148 +124,13 @@ export default {
     name: 'DetailsPokemon',
     data() {
         return {
-            liste: [{
-                img: "https://fakeimg.pl/350x200/ff0000,128/000,255",
-                modele: "1",
-                titre: "titre"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "2",
-                titre: "titre2"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "3",
-                titre: "titre3"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "4",
-                titre: "titre4"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "5",
-                titre: "titre5"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "6",
-                titre: "titre6"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "7",
-                titre: "titre7"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "8",
-                titre: "titre8"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "9",
-                titre: "titre9"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "10",
-                titre: "titre10"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "10",
-                titre: "titre10"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "10",
-                titre: "titre10"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "10",
-                titre: "titre10"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "10",
-                titre: "titre10"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "10",
-                titre: "titre10"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "10",
-                titre: "titre10"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "10",
-                titre: "titre10"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "10",
-                titre: "titre10"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "10",
-                titre: "titre10"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "10",
-                titre: "titre10"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "10",
-                titre: "titre10"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "10",
-                titre: "titre10"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "10",
-                titre: "titre10"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "10",
-                titre: "titre10"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "10",
-                titre: "titre10"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "10",
-                titre: "titre10"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "10",
-                titre: "titre10"
-            },
-            ]
+            pages: JSON.parse(localStorage.getItem('pages')),
         }
     },
     methods: {
         redirect(model) {
             //Function used to redirect the user to the model managing page
-            window.location.href = '/edit-template/' + model; //https://stackoverflow.com/questions/35664550/vue-js-redirection-to-another-page
+            window.location.href = '/edit-page/' + model; //https://stackoverflow.com/questions/35664550/vue-js-redirection-to-another-page
         }
     }
 }
