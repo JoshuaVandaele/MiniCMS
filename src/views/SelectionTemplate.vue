@@ -90,6 +90,10 @@ export default {
     methods: {
         redirect(index) {
             this.$router.push('/create-page/' + index);
+        },
+        imageOnError(event) {
+            // Définit l'URL de l'image de secours
+            event.target.src = 'https://fakeimg.pl/350x200/ff1234,128/000,255/?text=Pas de prévisualisation';
         }
     }
 }
