@@ -16,19 +16,16 @@
 
         <div id="frame">
             <div v-for="item in liste" class="template" @click="redirect(item.modele)">
-                <img v-bind:src="item.img">
+                <img v-bind:src="'/src/assets/img/thumbnails/' + item.modele + '.png'" @error="imageOnError" >
                 <p>
                     {{ item.titre }}
                 </p>
             </div>
             <router-link to="/selection-template" id="add_button">+</router-link>
         </div>
-
-        <router-link to="/selection-template" id="add_button">+</router-link>
     </div>
 </template>
 <style scoped>
-
 body {
     margin: 0;
     background-color: #00757c;
@@ -267,10 +264,14 @@ export default {
         }
     },
     methods: {
-      redirect(model){
-        //Function used to redirect the user to the model managing page
-        window.location.href = '/edit-template/'+model; //https://stackoverflow.com/questions/35664550/vue-js-redirection-to-another-page
-      }
+        redirect(model) {
+            //Function used to redirect the user to the model managing page
+            window.location.href = '/edit-template/' + model; //https://stackoverflow.com/questions/35664550/vue-js-redirection-to-another-page
+        },
+        imageOnError(event) {
+          // Définit l'URL de l'image de secours
+          event.target.src = 'https://fakeimg.pl/350x200/ff1234,128/000,255/?text=Pas de prévisualisation';
+        }
     }
 }
 </script>
