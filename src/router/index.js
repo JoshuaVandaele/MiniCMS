@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import Selection from '../views/Selection.vue'
 import SelectionTemplate from '../views/SelectionTemplate.vue'
 import EditTemplate from '../views/EditTemplate.vue'
-import Template_3 from '../views/template/Template_3.vue'
+import TemplateViewer from '../views/TemplateViewer.vue'
 
 
 const router = createRouter({
@@ -28,6 +28,11 @@ const router = createRouter({
       path: '/edit-template/:id',
       name: 'edit-template',
       component: EditTemplate
+    },
+    {
+      path: '/template-viewer/:id',
+      name: 'template-viewer',
+      component: TemplateViewer
     },
   ]
 })

@@ -1,20 +1,37 @@
 <template>
-    <div id="container">
-        <h1>header</h1>
-        <p>message</p>
-        <a class="a_button" id="next">></a>
-        <a class="a_button" id="prev">&lt</a>
+    <div :style="{
+        'background-image': 'url(../src/assets/img/' + data.content.background,
+        'width: 100%',
+        'height: 100%',
+    }">
+        <div id="container">
+            <h1>{{ data.content.title }}</h1>
+            <p>{{ data.content.text.fr }}</p>
+            <a class="a_button" id="next" href="{{ data.content.next }}">></a>
+            <a class="a_button" id="prev" href="">&lt;</a>
+        </div>
     </div>
 </template>
 
+<script>
+export default {
+    props: {
+        data: {
+            type: Object,
+            required: true,
+        },
+    },
+};
+</script>
+
+
 <style>
-body {
+#bg {
     width: 100%;
     height: 100%;
     background-color: #fff;
     margin: 0;
     padding: 0;
-    background-image: url("/Placeholder.png");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
