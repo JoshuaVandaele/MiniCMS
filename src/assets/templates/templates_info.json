@@ -26,7 +26,6 @@
   {
     "thumbnail": "/src/assets/img/thumbnails/2.png",
     "content": {
-      "background": "background.png",
       "title": {
         "fr": "Titre",
         "en": "Title"
@@ -35,6 +34,7 @@
         "fr": "Texte",
         "en": "Text"
       },
+      "background": "background.png",
       "activity": 1,
       "next": 3,
       "prev": 1
