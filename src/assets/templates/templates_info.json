@@ -26,6 +26,7 @@
   {
     "thumbnail": "/src/assets/img/thumbnails/2.png",
     "content": {
+      "background": "background.png",
       "title": {
         "fr": "Titre",
         "en": "Title"
