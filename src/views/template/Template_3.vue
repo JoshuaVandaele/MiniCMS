@@ -4,8 +4,8 @@
         Your browser does not support the video tag.
     </video>
     <div id="container">
-        <h1>{{ data.content.title }}</h1>
-        <p>{{ data.content.text }}</p>
+        <h1>{{ language == "fr" ? data.content.title.en : data.content.title.fr }}</h1>
+        <p>{{ language == "fr" ? data.content.text.en : data.content.text.fr }}</p>
         <a class="a_button" id="prev" :href="data.content.next" v-if="data.content.next">></a>
         <a class="a_button" id="prev" :href="data.content.previous" v-if="data.content.previous">&lt;</a>
         <a class="a_button" id="play" @click="playVideo">&#9654; Lecture</a>
@@ -125,12 +125,11 @@ video {
 export default {
     props: {
         data: {
-            type: Object,
             required: true,
         },
     },
 
-    mounted () {
+    mounted() {
         this.firstVideoElement = document.querySelector("video");
         this.playButton = document.getElementById('play');
         this.backgroundBlur = document.getElementById('background-blur');

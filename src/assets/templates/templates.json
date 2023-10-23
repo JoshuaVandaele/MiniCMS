@@ -35,10 +35,13 @@
     "template_id": 3,
     "content": {
       "title": {
-        "fr": "test video",
-        "en": "Video test"
-        },
-      "text": "test du lecteur video",
+        "fr": "Titre",
+        "en": "Title"
+      },
+      "text": {
+        "fr": "Texte",
+        "en": "Text"
+      },
       "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
       "previous": 2
     }
