@@ -1,5 +1,5 @@
 <script>
-import templates_json from "../assets/templates/templates.json";
+import templates_json from "../assets/templates/templates_info.json";
 
 export default {
     data() {

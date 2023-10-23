@@ -1,0 +1,58 @@
+[
+  {
+    "thumbnail": "/src/assets/img/thumbnails/1.png",
+    "content": {
+      "title": {
+        "fr": "Titre",
+        "en": "Title"
+      },
+      "text": {
+        "fr": "Texte",
+        "en": "Text"
+      },
+      "background": "background.png",
+      "next": 3,
+      "prev": 1
+    }
+  },
+  {
+    "thumbnail": "/src/assets/img/thumbnails/2.png",
+    "content": {
+      "background": "background.png",
+      "next": 3,
+      "prev": 1
+    }
+  },
+  {
+    "thumbnail": "/src/assets/img/thumbnails/3.png",
+    "content": {
+      "title": {
+        "fr": "Titre",
+        "en": "Title"
+      },
+      "text": {
+        "fr": "Texte",
+        "en": "Text"
+      },
+      "activity": 1,
+      "next": 3,
+      "prev": 1
+    }
+  },
+  {
+    "thumbnail": "/src/assets/img/thumbnails/4.png",
+    "content": {
+      "title": {
+        "fr": "Titre",
+        "en": "Title"
+      },
+      "text": {
+        "fr": "Texte",
+        "en": "Text"
+      },
+      "video": "video.mp4",
+      "next": 3,
+      "prev": 1
+    }
+  }
+]
