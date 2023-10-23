@@ -1,10 +1,10 @@
 <template>
-        <div id="container">
-            <h1>{{ data.content.title }}</h1>
-            <p>{{ data.content.text.fr }}</p>
-            <a class="a_button" id="prev" :href="data.content.next" v-if="data.content.next">></a>
-            <a class="a_button" id="prev" :href="data.content.previous" v-if="data.content.previous">&lt;</a>
-        </div>
+    <div id="container">
+        <h1> {{ language == "fr" ? data.content.title.en : data.content.title.fr }}</h1>
+        <p>{{ language == "fr" ? data.content.text.en : data.content.text.fr }}</p>
+        <a class="a_button" id="prev" :href="data.content.next" v-if="data.content.next">></a>
+        <a class="a_button" id="prev" :href="data.content.previous" v-if="data.content.previous">&lt;</a>
+    </div>
 </template>
 
 <script>
@@ -13,11 +13,12 @@ export default {
         data: {
             type: Object,
             required: true,
+            language: "fr"
         },
     },
 
-    mounted () {
-        document.body.style.backgroundImage = 'url("/src/assets/img/' + this.data.content.background +'")';
+    mounted() {
+        document.body.style.backgroundImage = 'url("/src/assets/img/' + this.data.content.background + '")';
     }
 };
 </script>
