@@ -5,7 +5,8 @@
         </div>
         <div id="template-picker-scrollarea">
             <div v-for="item in liste" id="template">
-                <img v-bind:src="item.img" @click="redirect(liste.indexOf(item))">
+                <img v-bind:src="'/src/assets/img/' + item.content.background" @click="redirect(liste.indexOf(item))" @error="imageOnError" width="100%">
+                <p>{{item.content.title.fr}}</p>
             </div>
         </div>
     </div>
@@ -78,66 +79,21 @@ body {
 
 
 <script>
+import liste from '../assets/templates/templates.json';
 export default {
     name: 'listeTemplate',
     data() {
         return {
-            liste: [{
-                img: "https://fakeimg.pl/350x200/ff0000,128/000,255",
-                modele: "1",
-                titre: "titre"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "2",
-                titre: "titre2"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "3",
-                titre: "titre3"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "4",
-                titre: "titre4"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "5",
-                titre: "titre5"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "6",
-                titre: "titre6"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "7",
-                titre: "titre7"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "8",
-                titre: "titre8"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "9",
-                titre: "titre9"
-            },
-            {
-                img: "https://fakeimg.pl/350x200/ff1234,128/000,255",
-                modele: "10",
-                titre: "titre10"
-            }
-            ]
+            liste: liste
         }
     },
     methods: {
         redirect(index) {
             this.$router.push('/create-page/' + index);
+        },
+        imageOnError(event) {
+            // Définit l'URL de l'image de secours
+            event.target.src = 'https://fakeimg.pl/350x200/ff1234,128/000,255/?text=Pas de prévisualisation';
         }
     }
 }

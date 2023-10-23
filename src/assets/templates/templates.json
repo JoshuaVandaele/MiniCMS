@@ -20,6 +20,10 @@
     "id": 2,
     "template_id": 1,
     "content": {
+      "title": {
+        "fr": "Titre",
+        "en": "Title"
+      },
       "background": "photo-montage-calais-boulogne-2021-4.png",
       "next": 3,
       "previous": 1
@@ -30,7 +34,10 @@
     "id": 3,
     "template_id": 3,
     "content": {
-      "title": "test video",
+      "title": {
+        "fr": "test video",
+        "en": "Video test"
+        },
       "text": "test du lecteur video",
       "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
       "previous": 2
