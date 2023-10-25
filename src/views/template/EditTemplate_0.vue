@@ -48,14 +48,17 @@ export default {
             const reader = new FileReader();
             reader.onload = (e) => {
                 this.data.page.content.background = e.target.result;
-                document.body.style.backgroundImage = `url(${this.data.page.content.background})`;
+                this.updateBackground();
             };
             reader.readAsDataURL(file);
         },
+        updateBackground() {
+            document.getElementById("editor-content").style.backgroundImage = `url(${this.data.page.content.background})`;
+        }
     },
 
     mounted() {
-        document.body.style.backgroundImage = `url(${this.data.page.content.background})`;
+        this.updateBackground();
     }
 };
 </script>
