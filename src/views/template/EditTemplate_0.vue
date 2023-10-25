@@ -67,9 +67,9 @@ export default {
     font-family: inherit;
 }
 
-body {
-    width: 100%;
-    height: 100%;
+#editor-content {
+    width: 100vw;
+    height: 100vh;
     background-color: #fff;
     margin: 0;
     padding: 0;

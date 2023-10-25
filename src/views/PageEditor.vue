@@ -8,7 +8,7 @@
             <option value="en">&#127468;&#127463;</option>
         </select>
     </nav>
-    <div>
+    <div id="editor-content">
         <component :is="template" :data="pageData"></component>
     </div>
 </template>
