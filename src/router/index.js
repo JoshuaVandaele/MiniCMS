@@ -5,6 +5,7 @@ import SelectionTemplate from '../views/SelectionTemplate.vue'
 import EditPage from '../views/EditPage.vue'
 import TemplateViewer from '../views/TemplateViewer.vue'
 import CreatePage from '../views/CreatePage.vue'
+import PageEditor from '../views/PageEditor.vue'
 
 
 const router = createRouter({
@@ -39,6 +40,11 @@ const router = createRouter({
       path: '/create-page/:templateID',
       name: 'create-page',
       component: CreatePage
+    },
+    {
+      path: '/page-editor/:pageID',
+      name: 'page-editor',
+      component: PageEditor
     }
   ]
 })

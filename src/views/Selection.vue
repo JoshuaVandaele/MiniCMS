@@ -131,9 +131,8 @@ export default {
         }
     },
     methods: {
-        redirect(model) {
-            //Function used to redirect the user to the model managing page
-            window.location.href = '/edit-page/' + model;//https://stackoverflow.com/questions/35664550/vue-js-redirection-to-another-page
+        redirect(pageID) {
+            this.$router.push(`/page-editor/${pageID}`);
         },
         imageOnError(event) {
             // Définit l'URL de l'image de secours
