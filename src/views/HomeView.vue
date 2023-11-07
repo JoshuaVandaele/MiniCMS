@@ -7,11 +7,51 @@
         </span>
 
         <div id="buttons">
-            <input type="button" value="Nouveau Projet" @click="$router.push('/selection')">
-            <input type="button" value="Ouvrir projet" @click="$router.push('/selection')">
+            <button @click="newProject">Nouveau Projet</button>
+            <input type="file" id="upload" accept=".json" @change="openProject" style="display: none">
+            <label for="upload">Ouvrir projet</label>
         </div>
     </div>
 </template>
+
+<script>
+import { DB_NAME, DB_VERSION } from "../db";
+import { importFromJson, clearDatabase } from "../idb-backup-and-restore"
+
+export default {
+    methods: {
+        newProject() {
+            const conn = indexedDB.open(DB_NAME, DB_VERSION)
+            conn.onsuccess = e => {
+                const idbDatabase = e.target.result;
+                clearDatabase(idbDatabase).then(this.$router.push('/selection')).catch(console.error)
+            }
+        },
+        loadProject(event) {
+            var files = event.target.files;
+            if (files.length === 0) {
+                console.error('No file is selected');
+                return;
+            }
+
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                const json = event.target.result
+                const conn = indexedDB.open(DB_NAME, DB_VERSION)
+                conn.onsuccess = function (e) {
+                    const idbDatabase = e.target.result;
+                    importFromJson(idbDatabase, json).then(window.location.replace('/selection')).catch(console.error)
+                }
+            };
+            reader.readAsText(files[0]);
+        }
+    },
+    mounted() {
+        document.getElementById('upload').addEventListener('change', this.loadProject);
+    }
+}
+</script>
+
 <style scoped>
 html,
 body {
@@ -59,7 +99,8 @@ img {
     transform: translate(0%, 0%);
 }
 
-#buttons input {
+#buttons label,
+#buttons button {
     border-radius: 24px;
     background-color: #0C6165;
     color: white;

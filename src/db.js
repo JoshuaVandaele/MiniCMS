@@ -1,11 +1,12 @@
 import { openDB } from 'idb';
+import { exportToJsonString } from 'indexeddb-export-import'
 
 // Define the IndexedDB name and version
-const DB_NAME = 'pagesDB';
-const DB_VERSION = 1;
+export const DB_NAME = 'pagesDB';
+export const DB_VERSION = 1;
 
 // Define the object store name
-const OBJECT_STORE_NAME = 'pages';
+export const OBJECT_STORE_NAME = 'pages';
 
 // Open the IndexedDB and create the object store
 const open_DB = openDB(DB_NAME, DB_VERSION, {

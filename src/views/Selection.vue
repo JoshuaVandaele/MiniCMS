@@ -8,7 +8,7 @@
             <ul>
                 <li><input type="button" value="Save"></li>
                 <li><input type="button" value="Load"></li>
-                <li><input type="button" value="Export"></li>
+                <li><input type="button" value="Export" @click="uploadDB()"></li>
                 <li><input type="button" value="Option"></li>
                 <li><input type="button" value="Preview"></li>
             </ul>
@@ -121,7 +121,8 @@ body {
 
 <script>
 import templates_json from "../assets/templates/templates_info.json";
-import { getAllPages } from "../db";
+import { getAllPages, DB_NAME, DB_VERSION } from "../db";
+import { exportToJson } from "../idb-backup-and-restore"
 
 export default {
     data() {
@@ -138,10 +139,28 @@ export default {
             // Définit l'URL de l'image de secours
             event.target.src = 'https://fakeimg.pl/350x200/ff1234,128/000,255/?text=Pas de prévisualisation';
         },
+        download(filename, text) {
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            element.click();
+
+            document.body.removeChild(element);
+        },
+        uploadDB() {
+            const conn = indexedDB.open(DB_NAME, DB_VERSION)
+            conn.onsuccess = e => {
+                const idbDatabase = e.target.result;
+                exportToJson(idbDatabase).then((jsonString) => { this.download("export.json", jsonString) }).catch(console.error)
+            }
+        }
     },
     async created() {
         this.pages = await getAllPages();
-        console.log(this.pages)
     }
 }
 </script>
