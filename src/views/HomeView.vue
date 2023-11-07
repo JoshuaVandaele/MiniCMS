@@ -15,17 +15,15 @@
 </template>
 
 <script>
-import { DB_NAME, DB_VERSION } from "../db";
-import { importFromJson, clearDatabase } from "../idb-backup-and-restore"
+import { DB_NAME, DB_VERSION, clearDB, deleteDB } from "../db";
+import { importFromJson } from "../idb-backup-and-restore"
 
 export default {
     methods: {
         newProject() {
-            const conn = indexedDB.open(DB_NAME, DB_VERSION)
-            conn.onsuccess = e => {
-                const idbDatabase = e.target.result;
-                clearDatabase(idbDatabase).then(this.$router.push('/selection')).catch(console.error)
-            }
+            clearDB()
+            deleteDB();
+            this.$router.push("/selection")
         },
         loadProject(event) {
             var files = event.target.files;

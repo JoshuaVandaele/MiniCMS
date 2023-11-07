@@ -4,8 +4,8 @@
             <router-link to="/selection" id="template-picker-close-button">X</router-link>
         </div>
         <div id="template-picker-scrollarea">
-            <div v-for="template in templates" id="template">
-                <img :src="template.thumbnail" @click="redirect(templates.indexOf(template))">
+            <div v-for="thumbnail in thumbnails" id="template">
+                <img :src="thumbnail" @click="redirect(thumbnails.indexOf(thumbnail))">
             </div>
         </div>
     </div>
@@ -78,13 +78,13 @@ body {
 
 
 <script>
-import templates_json from "../assets/templates/templates_info.json";
+const thumbnails = import.meta.glob("@/assets/img/thumbnails/*")
 
 export default {
     name: 'listeTemplate',
     data() {
         return {
-            templates: templates_json
+            thumbnails: []
         }
     },
     methods: {
@@ -95,6 +95,12 @@ export default {
             // Définit l'URL de l'image de secours
             event.target.src = 'https://fakeimg.pl/350x200/ff1234,128/000,255/?text=Pas de prévisualisation';
         }
+    },
+    async created() {
+        for (const thumbnail of Object.values(thumbnails)) {
+            const path = await thumbnail()
+            this.thumbnails.push(path.default)
+        };
     }
 }
 </script>

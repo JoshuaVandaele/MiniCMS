@@ -1,6 +1,5 @@
 [
   {
-    "thumbnail": "/src/assets/img/thumbnails/0.png",
     "content": {
       "title": {
         "fr": "Titre",
@@ -16,7 +15,6 @@
     }
   },
   {
-    "thumbnail": "/src/assets/img/thumbnails/1.png",
     "content": {
       "background": "background.png",
       "next": 3,
@@ -24,7 +22,6 @@
     }
   },
   {
-    "thumbnail": "/src/assets/img/thumbnails/2.png",
     "content": {
       "title": {
         "fr": "Titre",
@@ -41,7 +38,6 @@
     }
   },
   {
-    "thumbnail": "/src/assets/img/thumbnails/3.png",
     "content": {
       "title": {
         "fr": "Titre",
