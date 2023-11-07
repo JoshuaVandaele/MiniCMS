@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Selection from '../views/Selection.vue'
 import SelectionTemplate from '../views/SelectionTemplate.vue'
-import EditPage from '../views/EditPage.vue'
 import TemplateViewer from '../views/TemplateViewer.vue'
 import CreatePage from '../views/CreatePage.vue'
 import PageEditor from '../views/PageEditor.vue'
@@ -25,11 +24,6 @@ const router = createRouter({
       path: '/selection-template',
       name: 'selectionTemplate',
       component: SelectionTemplate
-    },
-    {
-      path: '/edit-page/:pageID',
-      name: 'edit-page',
-      component: EditPage
     },
     {
       path: '/template-viewer/:id',
