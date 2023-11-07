@@ -2,8 +2,8 @@
     <div id="container">
         <h1> {{ language == "fr" ? data.content.title.en : data.content.title.fr }}</h1>
         <p>{{ language == "fr" ? data.content.text.en : data.content.text.fr }}</p>
-        <a class="a_button" id="prev" :href="data.content.next" v-if="data.content.next">></a>
-        <a class="a_button" id="prev" :href="data.content.previous" v-if="data.content.previous">&lt;</a>
+        <a class="a_button" id="next" :href="data.content.next" v-if="data.content.next !== null && data.content.next !== ''">&gt;</a>
+        <a class="a_button" id="prev" :href="data.content.prev" v-if="data.content.prev !== null && data.content.prev !== ''">&lt;</a>
     </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
     },
 
     mounted() {
-        document.body.style.backgroundImage = 'url("/src/assets/img/' + this.data.content.background + '")';
+        document.body.style.backgroundImage = `url(${this.data.content.background})`;
     }
 };
 </script>

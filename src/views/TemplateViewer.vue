@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import json_load from "../assets/templates/templates.json";
+    import json_load from "../data/export.json";
 
     export default {
         props: ["id"],
@@ -18,7 +18,7 @@
 
         computed: {
             filteredJson() {
-                return this.myJson.filter((obj) => obj.id == this.$route.params.id);
+                return this.myJson.pages.filter((page) => page.id == this.$route.params.id);
             },
         },
 
@@ -28,7 +28,7 @@
 
         methods: {
             async getTemplate() {
-                const templatePath = `./template/Template_${this.filteredJson[0].template_id}.vue`;
+                const templatePath = './template/Template_' + this.filteredJson[0].templateID + '.vue';
                 const module = await import(templatePath);
                 return module.default;
             },
