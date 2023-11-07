@@ -7,9 +7,9 @@
         </span>
 
         <div id="buttons">
-            <button @click="newProject">Nouveau Projet</button>
+            <button class = "button" @click="newProject">Nouveau Projet</button>
             <input type="file" id="upload" accept=".json" @change="openProject" style="display: none">
-            <label for="upload">Ouvrir projet</label>
+            <label class = "button" for="upload">Ouvrir projet</label>
         </div>
     </div>
 </template>
@@ -97,25 +97,30 @@ img {
 #buttons {
     text-align: center;
     transform: translate(0%, 0%);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-#buttons label,
-#buttons button {
+#buttons button,
+#buttons label {
+    display: block;
     border-radius: 24px;
     background-color: #0C6165;
     color: white;
     border: none;
-    width: 20%;
-    height: 7%;
+    width: 400px;
+    height: 100px;
     font-size: 40px;
-    margin-top: 7%;
+    margin-top: 5%;
     margin-left: 2%;
     margin-right: 2%;
     padding: 16px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#buttons input:hover {
+#buttons .button:hover {
     background-color: #09464a;
+    cursor: pointer;
 }
 </style>
