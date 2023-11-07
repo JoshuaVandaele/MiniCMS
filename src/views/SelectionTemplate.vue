@@ -5,7 +5,7 @@
         </div>
         <div id="template-picker-scrollarea">
             <div v-for="template in templates" id="template">
-                <img :src="template.thumbnail" @click="redirect(template.indexOf(item))">
+                <img :src="template.thumbnail" @click="redirect(templates.indexOf(template))">
             </div>
         </div>
     </div>

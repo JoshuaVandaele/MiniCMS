@@ -62,3 +62,9 @@ export async function deletePage(id) {
     await store.delete(id);
     await tx.done;
 }
+
+// Function to get the last page from the IndexedDB
+export async function getLastPage() {
+    const pages = await getAllPages()
+    return pages[pages.length - 1]
+}

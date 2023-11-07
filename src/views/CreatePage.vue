@@ -1,6 +1,6 @@
 <script>
 import templates_json from "../assets/templates/templates_info.json";
-import { addPage } from "../db";
+import { addPage, getLastPage } from "../db";
 
 export default {
     data() {
@@ -8,13 +8,16 @@ export default {
             templateID: this.$route.params.templateID,
         };
     },
-    mounted() {
+    async mounted() {
         addPage({
             templateID: this.templateID,
             content: templates_json[this.templateID].content,
         })
 
-        this.$router.push('/edit-page/' + this.templateID);
+        const added_page = await getLastPage()
+        console.log(added_page)
+
+        this.$router.push('/page-editor/' + added_page.id);
     },
 
     methods: {
