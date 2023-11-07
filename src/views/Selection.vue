@@ -16,7 +16,7 @@
 
         <div id="frame">
             <div v-for="page in pages" class="template" @click="redirect(page.id)">
-                <img :src="templates[page.templateID].thumbnail">
+                <img :src="thumbnails[page.templateID]">
                 <p>{{ page.content.title ? page.content.title.fr : "Page " + page.id }}</p>
             </div>
             <router-link to="/selection-template" id="add_button">+</router-link>
@@ -120,7 +120,8 @@ body {
 </style>
 
 <script>
-import templates_json from "../assets/templates/templates_info.json";
+import templates_json from "@/assets/templates/templates_info.json";
+const thumbnails = import.meta.glob("@/assets/img/thumbnails/*")
 import { getAllPages, DB_NAME, DB_VERSION } from "../db";
 import { exportToJson } from "../idb-backup-and-restore"
 
@@ -129,6 +130,7 @@ export default {
         return {
             templates: templates_json,
             pages: [],
+            thumbnails: []
         }
     },
     methods: {
@@ -161,6 +163,10 @@ export default {
     },
     async created() {
         this.pages = await getAllPages();
+        for (const thumbnail of Object.values(thumbnails)) {
+            const path = await thumbnail()
+            this.thumbnails.push(path.default)
+        };
     }
 }
 </script>

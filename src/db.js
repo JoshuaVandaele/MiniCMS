@@ -1,5 +1,4 @@
 import { openDB } from 'idb';
-import { exportToJsonString } from 'indexeddb-export-import'
 
 // Define the IndexedDB name and version
 export const DB_NAME = 'pagesDB';
@@ -68,4 +67,19 @@ export async function deletePage(id) {
 export async function getLastPage() {
     const pages = await getAllPages()
     return pages[pages.length - 1]
+}
+
+// Function to remove all pages from the database
+export async function clearDB() {
+    const db = await open_DB;
+    const tx = db.transaction(OBJECT_STORE_NAME, 'readwrite');
+    const store = tx.objectStore(OBJECT_STORE_NAME);
+    await store.clear();
+    await tx.done;
+}
+
+// Function to remove the IndexedDB
+export async function deleteDB() {
+    const db = await open_DB;
+    await db.delete();
 }

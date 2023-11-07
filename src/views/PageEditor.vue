@@ -15,6 +15,7 @@
 
 <script>
 import { getPageById, replacePage, getAllPages } from "../db";
+const EditTemplates = import.meta.glob("../components/templates/EditTemplate_*.vue")
 import { toRaw } from "vue";
 
 export default {
@@ -25,16 +26,13 @@ export default {
             page: {},
             pages: [],
             pageID: Number(this.$route.params.pageID),
+            editTemplates: [],
             language: "fr",
         };
     },
     methods: {
         async getTemplate() {
-            console.log(this.page)
-            console.log(this.pageID)
-            const templatePath = `./template/EditTemplate_${this.page.templateID}.vue`;
-            const module = await import(templatePath);
-            return module.default;
+            return this.editTemplates[this.page.templateID];
         },
         async saveData() {
             console.log(this.page)
@@ -53,6 +51,13 @@ export default {
     async created() {
         this.page = await getPageById(this.pageID);
         this.pages = await getAllPages();
+
+        for (const EditTemplate of Object.values(EditTemplates)) {
+            const path = await EditTemplate()
+            console.log(path.default)
+            this.editTemplates.push(path.default)
+        };
+
         this.template = await this.getTemplate();
     }
 };
