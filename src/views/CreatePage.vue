@@ -1,5 +1,6 @@
 <script>
 import templates_json from "../assets/templates/templates_info.json";
+import { addPage } from "../db";
 
 export default {
     data() {
@@ -8,13 +9,11 @@ export default {
         };
     },
     mounted() {
-        const pages = JSON.parse(localStorage.getItem('pages')) || [];
-
-        pages.push({
+        addPage({
             templateID: this.templateID,
             content: templates_json[this.templateID].content,
-        });
-        localStorage.setItem('pages', JSON.stringify(pages));
+        })
+
         this.$router.push('/edit-page/' + this.templateID);
     },
 

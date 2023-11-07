@@ -15,9 +15,9 @@
         </div>
 
         <div id="frame">
-            <div v-for="page in pages" class="template" @click="redirect(pages.indexOf(page))">
+            <div v-for="page in pages" class="template" @click="redirect(page.id)">
                 <img :src="templates[page.templateID].thumbnail">
-                <p>{{ page.content.title.fr }}</p>
+                <p>{{ page.content.title ? page.content.title.fr : "Page " + page.id }}</p>
             </div>
             <router-link to="/selection-template" id="add_button">+</router-link>
         </div>
@@ -121,13 +121,13 @@ body {
 
 <script>
 import templates_json from "../assets/templates/templates_info.json";
+import { getAllPages } from "../db";
 
 export default {
-    name: 'DetailsPokemon',
     data() {
         return {
-            pages: JSON.parse(localStorage.getItem('pages')),
             templates: templates_json,
+            pages: [],
         }
     },
     methods: {
@@ -137,7 +137,11 @@ export default {
         imageOnError(event) {
             // Définit l'URL de l'image de secours
             event.target.src = 'https://fakeimg.pl/350x200/ff1234,128/000,255/?text=Pas de prévisualisation';
-        }
+        },
+    },
+    async created() {
+        this.pages = await getAllPages();
+        console.log(this.pages)
     }
 }
 </script>

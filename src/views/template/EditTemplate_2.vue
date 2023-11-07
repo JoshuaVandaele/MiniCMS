@@ -19,6 +19,7 @@
                 page.content.title ? (data.language == 'fr' ? page.content.title.fr : page.content.title.en) : "Page " +
                 page.id }}</option>
         </select>
+        <a class="a_button" id="play">&#9654; Jouer</a>
     </div>
 </template>
 
@@ -65,8 +66,27 @@ export default {
 };
 </script>
 
-
 <style>
+.a_button {
+    background-color: #FF0000;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 32px;
+    font-weight: bolder;
+    border-radius: 90px;
+    text-transform: uppercase;
+}
+
+#play {
+    padding: 8px;
+    padding-left: 64px;
+    padding-right: 64px;
+    float: left;
+    margin-left: 8px;
+    margin-bottom: 8px;
+}
+
 #container textarea,
 #container input {
     font-family: inherit;

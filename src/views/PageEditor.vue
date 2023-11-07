@@ -14,42 +14,46 @@
 </template>
 
 <script>
+import { getPageById, replacePage, getAllPages } from "../db";
+import { toRaw } from "vue";
+
 export default {
     props: ["id"],
     data() {
         return {
             template: null,
-            pages: JSON.parse(localStorage.getItem('pages')),
-            pageID: this.$route.params.pageID,
+            page: {},
+            pages: [],
+            pageID: Number(this.$route.params.pageID),
             language: "fr",
         };
     },
-
-    async mounted() {
-        this.template = await this.getTemplate();
-    },
-
     methods: {
         async getTemplate() {
-            console.log(this.pages)
+            console.log(this.page)
             console.log(this.pageID)
-            const templatePath = `./template/EditTemplate_${this.pages[this.pageID].templateID}.vue`;
+            const templatePath = `./template/EditTemplate_${this.page.templateID}.vue`;
             const module = await import(templatePath);
             return module.default;
         },
-        saveData() {
-            localStorage.setItem('pages', JSON.stringify(this.pages));
+        async saveData() {
+            console.log(this.page)
+            await replacePage(structuredClone(toRaw(this.page)));
         },
     },
-
     computed: {
         pageData() {
             return {
+                page: this.page,
                 pages: this.pages,
-                page: this.pages[this.pageID],
                 language: this.language
             };
         }
+    },
+    async created() {
+        this.page = await getPageById(this.pageID);
+        this.pages = await getAllPages();
+        this.template = await this.getTemplate();
     }
 };
 </script>

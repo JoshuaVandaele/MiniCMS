@@ -4,7 +4,7 @@
         <p></p>
         <a class="a_button" id="prev" :href="data.content.next" v-if="data.content.next">></a>
         <a class="a_button" id="prev" :href="data.content.previous" v-if="data.content.previous">&lt;</a>
-        <a class="a_button" id="play" href="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4">&#9654; Jouer</a>
+        <a class="a_button" id="play">&#9654; Jouer</a>
     </div>
 </template>
 
