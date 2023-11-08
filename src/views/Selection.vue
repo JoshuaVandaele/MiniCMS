@@ -6,10 +6,12 @@
         </a>
         <div class="navbar">
             <ul>
-                <li><input type="button" value="Save"></li>
-                <li><input type="button" value="Load"></li>
-                <li><input type="button" value="Export" @click="uploadDB()"></li>
-                <li><input type="button" value="Option"></li>
+                <li><input type="button" value="Save" @click="uploadDB()"></li>
+                <li>
+                    <input type="file" id="load" accept=".json" @change="switchDB" style="display: none">
+                    <label for="load">Load</label>
+                </li>
+                <li><input type="button" value="Export"></li>
                 <li><input type="button" value="Preview"></li>
             </ul>
         </div>
@@ -53,7 +55,8 @@ body {
     margin-right: 10px;
 }
 
-.navbar ul li input {
+.navbar ul li input,
+.navbar ul li label {
     width: 210px;
     height: 80px;
     border-radius: 20px;
@@ -64,7 +67,8 @@ body {
     color: white;
 }
 
-.navbar ul li input:hover {
+.navbar ul li input:hover,
+.navbar ul li label:hover {
     background-color: #094549;
 }
 
@@ -122,8 +126,8 @@ body {
 <script>
 import templates_json from "@/assets/templates/templates_info.json";
 const thumbnails = import.meta.glob("@/assets/img/thumbnails/*")
-import { getAllPages, DB_NAME, DB_VERSION } from "../db";
-import { exportToJson } from "../idb-backup-and-restore"
+import { clearDB, deleteDB, getAllPages, DB_NAME, DB_VERSION } from "../db";
+import { exportToJson, importFromJson } from "../idb-backup-and-restore"
 
 export default {
     data() {
@@ -159,6 +163,30 @@ export default {
                 const idbDatabase = e.target.result;
                 exportToJson(idbDatabase).then((jsonString) => { this.download("export.json", jsonString) }).catch(console.error)
             }
+        },
+        async switchDB(event) {
+            var files = event.target.files;
+            if (files.length === 0) {
+                console.error('No file is selected');
+                return;
+            }
+            try {
+                await deleteDB()
+            } catch (e) {
+                console.error(e)
+            }
+            await clearDB()
+
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                const json = event.target.result
+                const conn = indexedDB.open(DB_NAME, DB_VERSION)
+                conn.onsuccess = function (e) {
+                    const idbDatabase = e.target.result;
+                    importFromJson(idbDatabase, json).then(window.location.replace('/selection')).catch(console.error)
+                }
+            };
+            reader.readAsText(files[0]);
         }
     },
     async created() {
