@@ -1,8 +1,9 @@
 <template>
     <nav id="editor-nav">
-        <button id="back_button" @click="$router.push('/selection')">Back</button>
+        <button id="back_button" @click="leave">Back</button>
         <button id="save_button" @click="saveData">Save</button>
         <button id="preview_button" @click="$router.push(`/template-viewer/${pageID}`)">Preview</button>
+        <button id="delete_button" @click="removePage">Delete</button>
         <select id="lang_select" v-model="language">
             <option value="fr">&#127467;&#127479;</option>
             <option value="en">&#127468;&#127463;</option>
@@ -14,7 +15,7 @@
 </template>
 
 <script>
-import { getPageById, replacePage, getAllPages } from "../db";
+import { getPageById, replacePage, getAllPages, deletePage } from "../db";
 const EditTemplates = import.meta.glob("../components/templates/EditTemplate_*.vue")
 import { toRaw } from "vue";
 
@@ -24,6 +25,7 @@ export default {
         return {
             template: null,
             page: {},
+            savedPage: {},
             pages: [],
             pageID: Number(this.$route.params.pageID),
             editTemplates: [],
@@ -35,9 +37,21 @@ export default {
             return this.editTemplates[this.page.templateID];
         },
         async saveData() {
-            console.log(this.page)
             await replacePage(structuredClone(toRaw(this.page)));
+            this.savedPage = await getPageById(this.pageID);
         },
+        async removePage() {
+            if (!confirm("Are you sure you want to delete this page?")) return;
+            await deletePage(this.pageID);
+            this.$router.push("/selection");
+        },
+        async leave() {
+            console.log(this.page, this.savedPage)
+            if (JSON.stringify(this.page) != JSON.stringify(this.savedPage) && confirm("Do you want to save your changes?")) {
+                await this.saveData();
+            }
+            this.$router.push("/selection");
+        }
     },
     computed: {
         pageData() {
@@ -51,6 +65,7 @@ export default {
     async created() {
         this.page = await getPageById(this.pageID);
         this.pages = await getAllPages();
+        this.savedPage = structuredClone(toRaw(this.page))
 
         for (const EditTemplate of Object.values(EditTemplates)) {
             const path = await EditTemplate()
