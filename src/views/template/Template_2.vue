@@ -1,9 +1,9 @@
 <template>
     <div id="container">
-        <h1></h1>
-        <p></p>
-        <a class="a_button" id="next" :href="data.content.next" v-if="data.content.next !== null && data.content.next !== ''">&gt;</a>
-        <a class="a_button" id="prev" :href="data.content.prev" v-if="data.content.prev !== null && data.content.prev !== ''">&lt;</a>
+        <h1> {{ data.language == "en" ? data.filteredJson.content.title.en : data.filteredJson.content.title.fr }}</h1>
+        <p>{{ data.language == "en" ? data.filteredJson.content.text.en : data.filteredJson.content.text.fr }}</p>
+        <a class="a_button" id="next" :href="data.filteredJson.content.next" v-if="data.filteredJson.content.next !== null && data.filteredJson.content.next !== ''">&gt;</a>
+        <a class="a_button" id="prev" :href="data.filteredJson.content.prev" v-if="data.filteredJson.content.prev !== null && data.filteredJson.content.prev !== ''">&lt;</a>
         <a class="a_button" id="play">&#9654; Jouer</a>
     </div>
 </template>
