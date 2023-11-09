@@ -7,9 +7,9 @@
         </span>
 
         <div id="buttons">
-            <button class = "button" @click="newProject">Nouveau Projet</button>
+            <button class="button" @click="newProject">Nouveau Projet</button>
             <input type="file" id="upload" accept=".json" @change="openProject" style="display: none">
-            <label class = "button" for="upload">Ouvrir projet</label>
+            <label class="button" for="upload">Ouvrir projet</label>
         </div>
     </div>
 </template>
@@ -20,12 +20,22 @@ import { importFromJson } from "../idb-backup-and-restore"
 
 export default {
     methods: {
-        newProject() {
-            clearDB()
-            deleteDB();
+        async newProject() {
+            try {
+                await deleteDB()
+            } catch (e) {
+                console.error(e)
+            }
+            await clearDB()
             this.$router.push("/selection")
         },
-        loadProject(event) {
+        async loadProject(event) {
+            try {
+                await deleteDB()
+            } catch (e) {
+                console.error(e)
+            }
+            await clearDB()
             var files = event.target.files;
             if (files.length === 0) {
                 console.error('No file is selected');

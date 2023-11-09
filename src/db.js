@@ -8,21 +8,23 @@ export const DB_VERSION = 1;
 export const OBJECT_STORE_NAME = 'pages';
 
 // Open the IndexedDB and create the object store
-const open_DB = openDB(DB_NAME, DB_VERSION, {
-    upgrade(db) {
-        if (!db.objectStoreNames.contains(OBJECT_STORE_NAME)) {
-            const store = db.createObjectStore(OBJECT_STORE_NAME, {
-                keyPath: 'id',
-                autoIncrement: true,
-            });
-            store.createIndex('id', 'id', { unique: true });
-        }
-    },
-});
+export async function open_DB() {
+    return openDB(DB_NAME, DB_VERSION, {
+        upgrade(db) {
+            if (!db.objectStoreNames.contains(OBJECT_STORE_NAME)) {
+                const store = db.createObjectStore(OBJECT_STORE_NAME, {
+                    keyPath: 'id',
+                    autoIncrement: true,
+                });
+                store.createIndex('id', 'id', { unique: true });
+            }
+        },
+    });
+}
 
 // Function to add a page to the IndexedDB
 export async function addPage(page) {
-    const db = await open_DB;
+    const db = await open_DB();
     const tx = db.transaction(OBJECT_STORE_NAME, 'readwrite');
     const store = tx.objectStore(OBJECT_STORE_NAME);
     await store.add(page);
@@ -31,7 +33,7 @@ export async function addPage(page) {
 
 // Function to retrieve a page from the IndexedDB by its ID
 export async function getPageById(id) {
-    const db = await open_DB;
+    const db = await open_DB();
     const tx = db.transaction(OBJECT_STORE_NAME, 'readonly');
     const store = tx.objectStore(OBJECT_STORE_NAME);
     return store.get(id);
@@ -39,7 +41,7 @@ export async function getPageById(id) {
 
 // Function to retrieve all pages from the IndexedDB
 export async function getAllPages() {
-    const db = await open_DB;
+    const db = await open_DB();
     const tx = db.transaction(OBJECT_STORE_NAME, 'readonly');
     const store = tx.objectStore(OBJECT_STORE_NAME);
     return store.getAll();
@@ -47,7 +49,7 @@ export async function getAllPages() {
 
 // Function to replace a page in the IndexedDB
 export async function replacePage(page) {
-    const db = await open_DB;
+    const db = await open_DB();
     const tx = db.transaction(OBJECT_STORE_NAME, 'readwrite');
     const store = tx.objectStore(OBJECT_STORE_NAME);
     await store.put(page);
@@ -56,7 +58,7 @@ export async function replacePage(page) {
 
 // Function to delete a page from the IndexedDB
 export async function deletePage(id) {
-    const db = await open_DB;
+    const db = await open_DB();
     const tx = db.transaction(OBJECT_STORE_NAME, 'readwrite');
     const store = tx.objectStore(OBJECT_STORE_NAME);
     await store.delete(id);
@@ -71,7 +73,7 @@ export async function getLastPage() {
 
 // Function to remove all pages from the database
 export async function clearDB() {
-    const db = await open_DB;
+    const db = await open_DB();
     const tx = db.transaction(OBJECT_STORE_NAME, 'readwrite');
     const store = tx.objectStore(OBJECT_STORE_NAME);
     await store.clear();
@@ -80,6 +82,5 @@ export async function clearDB() {
 
 // Function to remove the IndexedDB
 export async function deleteDB() {
-    const db = await open_DB;
-    await db.delete();
+    window.indexedDB.deleteDatabase(DB_NAME)
 }
