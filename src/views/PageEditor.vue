@@ -2,7 +2,7 @@
     <nav id="editor-nav">
         <button id="back_button" @click="leave">Back</button>
         <button id="save_button" @click="saveData">Save</button>
-        <button id="preview_button" @click="$router.push(`/template-viewer/${pageID}`)">Preview</button>
+        <button id="preview_button" @click="previewPage">Preview</button>
         <button id="delete_button" @click="removePage">Delete</button>
         <select id="lang_select" v-model="language">
             <option value="fr">&#127467;&#127479;</option>
@@ -33,6 +33,11 @@ export default {
         };
     },
     methods: {
+        async askForSave() {
+            if (JSON.stringify(this.page) != JSON.stringify(this.savedPage) && confirm("Do you want to save your changes?")) {
+                await this.saveData();
+            }
+        },
         async getTemplate() {
             return this.editTemplates[this.page.templateID];
         },
@@ -45,11 +50,12 @@ export default {
             await deletePage(this.pageID);
             this.$router.push("/selection");
         },
+        async previewPage() {
+            await this.askForSave();
+            window.open(`/template-viewer/${this.pageID}`);
+        },
         async leave() {
-            console.log(this.page, this.savedPage)
-            if (JSON.stringify(this.page) != JSON.stringify(this.savedPage) && confirm("Do you want to save your changes?")) {
-                await this.saveData();
-            }
+            await this.askForSave();
             this.$router.push("/selection");
         }
     },
