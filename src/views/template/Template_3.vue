@@ -6,17 +6,19 @@
     <div id="container">
         <h1> {{ data.language == "en" ? data.filteredJson.content.title.en : data.filteredJson.content.title.fr }}</h1>
         <p>{{ data.language == "en" ? data.filteredJson.content.text.en : data.filteredJson.content.text.fr }}</p>
-        <a class="a_button" id="next" :href="data.filteredJson.content.next" v-if="data.filteredJson.content.next !== null && data.filteredJson.content.next !== ''">&gt;</a>
-        <a class="a_button" id="prev" :href="data.filteredJson.content.prev" v-if="data.filteredJson.content.prev !== null && data.filteredJson.content.prev !== ''">&lt;</a>
+        <a class="a_button" id="next" :href="data.filteredJson.content.next"
+            v-if="data.filteredJson.content.next !== null && data.filteredJson.content.next !== ''">&gt;</a>
+        <a class="a_button" id="prev" :href="data.filteredJson.content.prev"
+            v-if="data.filteredJson.content.prev !== null && data.filteredJson.content.prev !== ''">&lt;</a>
         <a class="a_button" id="play" @click="playVideo">&#9654; Lecture</a>
     </div>
     <div id="background-blur"></div>
 </template>
 
 <style>
-body {
-    width: 100%;
-    height: 100%;
+#view-content {
+    width: 100vw;
+    height: 100vh;
     background-color: #fff;
     margin: 0;
     padding: 0;
@@ -32,7 +34,7 @@ body {
     overflow: hidden;
 }
 
-h1 {
+#view-content h1 {
     background-color: #0C6165;
     color: white;
     margin: 0;
@@ -40,7 +42,7 @@ h1 {
     font-size: 64px;
 }
 
-p {
+#view-content p {
     border: 1px solid #000;
     color: black;
     padding: 8px;
