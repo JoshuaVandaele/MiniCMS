@@ -4,7 +4,9 @@
             <option value="fr">&#127467;&#127479;</option>
             <option value="en">&#127468;&#127463;</option>
         </select>
-        <component :is="template" :data="pageData"></component>
+        <div id="view-content">
+            <component :is="template" :data="pageData"></component>
+        </div>
     </div>
 </template>
 

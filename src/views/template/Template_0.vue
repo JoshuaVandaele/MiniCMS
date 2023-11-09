@@ -16,7 +16,7 @@ export default {
     },
 
     mounted() {
-        document.body.style.backgroundImage = `url(${this.data.filteredJson.content.background})`;
+        document.getElementById("view-content").style.backgroundImage = `url(${this.data.filteredJson.content.background})`;
     },
     created() {
 
@@ -27,9 +27,9 @@ export default {
 
 
 <style>
-body {
-    width: 100%;
-    height: 100%;
+#view-content {
+    width: 100vw;
+    height: 100vh;
     background-color: #fff;
     margin: 0;
     padding: 0;
