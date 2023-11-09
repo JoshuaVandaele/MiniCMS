@@ -26,7 +26,7 @@
         </div>
 
         <div id="frame">
-            <div v-for="page in pages" class="template" @click="redirect(page.id)">
+            <div v-for="page in pages" :key="page.id" class="template" @click="redirect(page.id)">
                 <img :src="thumbnails[page.templateID]">
                 <p>{{ page.content.title ? page.content.title.fr : "Page " + page.id }}</p>
             </div>
