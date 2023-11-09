@@ -10,15 +10,15 @@
         "en": "Text"
       },
       "background": "background.png",
-      "next": 3,
-      "prev": 1
+      "next": null,
+      "prev": null
     }
   },
   {
     "content": {
       "background": "background.png",
-      "next": 3,
-      "prev": 1
+      "next": null,
+      "prev": null
     }
   },
   {
@@ -33,8 +33,8 @@
       },
       "background": "background.png",
       "activity": 1,
-      "next": 3,
-      "prev": 1
+      "next": null,
+      "prev": null
     }
   },
   {
@@ -48,8 +48,8 @@
         "en": "Text"
       },
       "video": "video.mp4",
-      "next": 3,
-      "prev": 1
+      "next": null,
+      "prev": null
     }
   }
 ]
