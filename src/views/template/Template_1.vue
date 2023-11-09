@@ -13,9 +13,9 @@ export default {
         },
     },
 
-    mounted () {
-        document.body.style.backgroundImage = `url(${this.data.filteredJson.content.background})`;
-    }
+    mounted() {
+        document.getElementById("view-content").style.backgroundImage = `url(${this.data.filteredJson.content.background})`;
+    },
 };
 </script>
 
