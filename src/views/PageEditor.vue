@@ -48,7 +48,7 @@ export default {
         async removePage() {
             if (!confirm("Are you sure you want to delete this page?")) return;
             await deletePage(this.pageID);
-            this.$router.push("/selection");
+            this.$router.push("/selection-page");
         },
         async previewPage() {
             await this.askForSave();
@@ -56,7 +56,7 @@ export default {
         },
         async leave() {
             await this.askForSave();
-            this.$router.push("/selection");
+            this.$router.push("/selection-page");
         }
     },
     computed: {

@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import Selection from '../views/Selection.vue'
+import SelectionPage from '../views/SelectionPage.vue'
 import SelectionTemplate from '../views/SelectionTemplate.vue'
 import TemplateViewer from '../views/TemplateViewer.vue'
 import CreatePage from '../views/CreatePage.vue'
@@ -16,9 +16,9 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/selection',
-      name: 'selection',
-      component: Selection
+      path: '/selection-page',
+      name: 'selectionPage',
+      component: SelectionPage
     },
     {
       path: '/selection-template',

@@ -1,7 +1,7 @@
 <template>
     <div id="template-picker">
         <div id="template-picker-topbar">
-            <router-link to="/selection" id="template-picker-close-button">X</router-link>
+            <router-link to="/selection-page" id="template-picker-close-button">X</router-link>
         </div>
         <div id="template-picker-scrollarea">
             <div v-for="thumbnail in thumbnails" id="template">

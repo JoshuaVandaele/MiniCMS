@@ -209,7 +209,7 @@ export default {
                 const conn = indexedDB.open(DB_NAME, DB_VERSION)
                 conn.onsuccess = function (e) {
                     const idbDatabase = e.target.result;
-                    importFromJson(idbDatabase, json).then(window.location.replace('/selection')).catch(console.error)
+                    importFromJson(idbDatabase, json).then(window.location.replace('/selection-page')).catch(console.error)
                 }
             };
             reader.readAsText(files[0]);
