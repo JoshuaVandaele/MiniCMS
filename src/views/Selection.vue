@@ -172,7 +172,7 @@ export default {
             const conn = indexedDB.open(DB_NAME, DB_VERSION)
             conn.onsuccess = e => {
                 const idbDatabase = e.target.result;
-                exportToJson(idbDatabase).then((jsonString) => { this.download("export.json", jsonString) }).catch(console.error)
+                exportToJson(idbDatabase).then((jsonString) => { this.download("project.json", jsonString) }).catch(console.error)
             }
         },
         async switchDB(event) {
