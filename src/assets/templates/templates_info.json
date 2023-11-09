@@ -9,14 +9,14 @@
         "fr": "Texte",
         "en": "Text"
       },
-      "background": "background.png",
+      "background": "",
       "next": null,
       "prev": null
     }
   },
   {
     "content": {
-      "background": "background.png",
+      "background": "",
       "next": null,
       "prev": null
     }
@@ -31,7 +31,7 @@
         "fr": "Texte",
         "en": "Text"
       },
-      "background": "background.png",
+      "background": "",
       "activity": 1,
       "next": null,
       "prev": null
@@ -47,7 +47,7 @@
         "fr": "Texte",
         "en": "Text"
       },
-      "video": "video.mp4",
+      "video": "",
       "next": null,
       "prev": null
     }
