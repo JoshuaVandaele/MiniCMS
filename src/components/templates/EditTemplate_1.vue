@@ -1,7 +1,7 @@
 <template>
     <input type="file" id="background" @change="handleBackgroundChange" />
     <label for="background" id="background-label">Importer un fichier</label>
-    <div id="container">
+    <div id="container_2">
         <select id="next" v-model="data.page.content.next">
             <option selected></option>
             <option v-for="(page, index) in data.pages" :key="index" :value="page.id">{{
@@ -57,16 +57,16 @@ export default {
     background-size: 100% 100%;
 }
 
-#container {
+#container_2 {
     width: 100%;
     height: auto;
-    background-color: white;
+    background-color: initial;
     position: absolute;
     bottom: 0;
     overflow: hidden;
 }
 
-#container select {
+#container_2 select {
     background-color: #FF0000;
     color: white;
     text-align: center;

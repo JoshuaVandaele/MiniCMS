@@ -1,5 +1,5 @@
 <template>
-    <div id="container">
+    <div id="container_2">
         <a class="a_button" id="next" :href="data.filteredJson.content.next" v-if="data.filteredJson.content.next !== null && data.filteredJson.content.next !== ''">&gt;</a>
         <a class="a_button" id="prev" :href="data.filteredJson.content.prev" v-if="data.filteredJson.content.prev !== null && data.filteredJson.content.prev !== ''">&lt;</a>
     </div>
@@ -32,11 +32,11 @@ export default {
     background-size: 100% ;
 }
 
-#container {
+#container_2 {
     width: 100%;
     height: auto;
-    background-color: white;
     position: absolute;
+    background-color: initial;
     bottom: 0;
     overflow: hidden;
 }
