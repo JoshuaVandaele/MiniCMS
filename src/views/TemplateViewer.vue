@@ -23,39 +23,36 @@
 </style>
 
 <script>
-    import json_load from "../data/export.json";
+    import { getPageById } from "../db";
 
     export default {
         props: ["id"],
 
         data() {
             return {
-                    myJson: json_load,
                     template: null,
                     language: "fr",
+                    page: {},
             };
         },
 
         computed: {
-            filteredJson() {
-                return this.myJson.pages.filter((page) => page.id == this.$route.params.id);
-            },
-
             pageData() {
                 return {
                     language: this.language,
-                    filteredJson: this.filteredJson[0],
+                    filteredJson: this.page,
                 }
             },
         },
 
-        async mounted() {
+        async created() {
+            this.page = await getPageById(Number(this.$route.params.id));
             this.template = await this.getTemplate();
         },
 
         methods: {
             async getTemplate() {
-                const templatePath = './template/Template_' + this.filteredJson[0].templateID + '.vue';
+                const templatePath = './template/Template_' + this.page.templateID + '.vue';
                 const module = await import(templatePath);
                 return module.default;
             },
