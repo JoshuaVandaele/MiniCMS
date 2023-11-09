@@ -6,13 +6,22 @@
         </a>
         <div class="navbar">
             <ul>
-                <li><input type="button" value="Save" @click="uploadDB()"></li>
+                <li>
+                    <input type="button" id="save" @click="uploadDB()" style="display: none">
+                    <label for="save">Save</label>
+                </li>
                 <li>
                     <input type="file" id="load" accept=".json" @change="switchDB" style="display: none">
                     <label for="load">Load</label>
                 </li>
-                <li><input type="button" value="Export"></li>
-                <li><input type="button" value="Preview"></li>
+                <li>
+                    <input type="button" id="export" style="display: none">
+                    <label for="export">Export</label>
+                </li>
+                <li>
+                    <input type="button" id="preview" style="display: none">
+                    <label for="preview">Preview</label>
+                </li>
             </ul>
         </div>
 
@@ -63,8 +72,10 @@ body {
     background-color: #0C6165;
     position: relative;
     border: none;
-    font-size: 48;
+    font-size: 32px;
     color: white;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .navbar ul li input:hover,
