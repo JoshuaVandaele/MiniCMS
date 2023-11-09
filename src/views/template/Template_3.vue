@@ -1,13 +1,13 @@
 <template>
     <video>
-        <source :src="data.content.video" type="video/mp4" class="video-transition">
+        <source :src="data.filteredJson.content.video" type="video/mp4" class="video-transition">
         Your browser does not support the video tag.
     </video>
     <div id="container">
-        <h1>{{ language == "fr" ? data.content.title.en : data.content.title.fr }}</h1>
-        <p>{{ language == "fr" ? data.content.text.en : data.content.text.fr }}</p>
-        <a class="a_button" id="prev" :href="data.content.next" v-if="data.content.next">></a>
-        <a class="a_button" id="prev" :href="data.content.previous" v-if="data.content.previous">&lt;</a>
+        <h1> {{ data.language == "en" ? data.filteredJson.content.title.en : data.filteredJson.content.title.fr }}</h1>
+        <p>{{ data.language == "en" ? data.filteredJson.content.text.en : data.filteredJson.content.text.fr }}</p>
+        <a class="a_button" id="next" :href="data.filteredJson.content.next" v-if="data.filteredJson.content.next !== null && data.filteredJson.content.next !== ''">&gt;</a>
+        <a class="a_button" id="prev" :href="data.filteredJson.content.prev" v-if="data.filteredJson.content.prev !== null && data.filteredJson.content.prev !== ''">&lt;</a>
         <a class="a_button" id="play" @click="playVideo">&#9654; Lecture</a>
     </div>
     <div id="background-blur"></div>
