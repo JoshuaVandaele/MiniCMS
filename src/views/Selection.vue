@@ -19,7 +19,7 @@
                     <label for="export">Export</label>
                 </li>
                 <li>
-                    <input type="button" id="preview" style="display: none">
+                    <input type="button" id="preview" @click="openPreview" style="display: none">
                     <label for="preview">Preview</label>
                 </li>
             </ul>
@@ -139,6 +139,7 @@ import templates_json from "@/assets/templates/templates_info.json";
 const thumbnails = import.meta.glob("@/assets/img/thumbnails/*")
 import { clearDB, deleteDB, getAllPages, DB_NAME, DB_VERSION } from "../db";
 import { exportToJson, importFromJson } from "../idb-backup-and-restore"
+const MAX_DEPTH = 100;
 
 export default {
     data() {
@@ -174,6 +175,20 @@ export default {
                 const idbDatabase = e.target.result;
                 exportToJson(idbDatabase).then((jsonString) => { this.download("project.json", jsonString) }).catch(console.error)
             }
+        },
+        openPreview() {
+            console.log(this.pages)
+            let firstPage = this.pages[0];
+            let depth = 0;
+            while (firstPage.content.prev) {
+                depth++;
+                if (depth > MAX_DEPTH) {
+                    console.error("Infinite loop detected")
+                    break;
+                }
+                firstPage = this.pages.find(page => page.id === firstPage.content.prev)
+            }
+            window.open(`/template-viewer/${firstPage.id}`);
         },
         async switchDB(event) {
             var files = event.target.files;
