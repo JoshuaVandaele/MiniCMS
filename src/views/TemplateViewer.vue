@@ -1,6 +1,6 @@
 <template>
     <div>
-        <select id="lang_select" v-model="language">
+        <select id="lang_select_view" v-model="language">
             <option value="fr">&#127467;&#127479;</option>
             <option value="en">&#127468;&#127463;</option>
         </select>
@@ -11,7 +11,7 @@
 </template>
 
 <style>
-#lang_select {
+#lang_select_view {
     position: absolute;
     padding: 10px;
     font-size: 16px;
@@ -25,39 +25,39 @@
 </style>
 
 <script>
-    import { getPageById } from "../db";
+import { getPageById } from "../db";
 
-    export default {
-        props: ["id"],
+export default {
+    props: ["id"],
 
-        data() {
+    data() {
+        return {
+            template: null,
+            language: "fr",
+            page: {},
+        };
+    },
+
+    computed: {
+        pageData() {
             return {
-                    template: null,
-                    language: "fr",
-                    page: {},
-            };
+                language: this.language,
+                filteredJson: this.page,
+            }
         },
+    },
 
-        computed: {
-            pageData() {
-                return {
-                    language: this.language,
-                    filteredJson: this.page,
-                }
-            },
-        },
+    async created() {
+        this.page = await getPageById(Number(this.$route.params.id));
+        this.template = await this.getTemplate();
+    },
 
-        async created() {
-            this.page = await getPageById(Number(this.$route.params.id));
-            this.template = await this.getTemplate();
+    methods: {
+        async getTemplate() {
+            const templatePath = './template/Template_' + this.page.templateID + '.vue';
+            const module = await import(templatePath);
+            return module.default;
         },
-
-        methods: {
-            async getTemplate() {
-                const templatePath = './template/Template_' + this.page.templateID + '.vue';
-                const module = await import(templatePath);
-                return module.default;
-            },
-        },
-    };
+    },
+};
 </script>
