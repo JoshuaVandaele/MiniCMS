@@ -16,7 +16,7 @@
 
 <script>
 import { getPageById, replacePage, getAllPages, deletePage } from "../db";
-const EditTemplates = import.meta.glob("../components/templates/EditTemplate_*.vue")
+const EditTemplates = import.meta.glob("./template/EditTemplate_*.vue")
 import { toRaw } from "vue";
 
 export default {
