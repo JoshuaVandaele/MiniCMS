@@ -5,8 +5,11 @@
         <input type="text" id="title"
             :value="data.language == 'fr' ? data.page.content.title.fr : data.page.content.title.en"
             @change="handleTitleEdit" />
-        <textarea id="text"
-            @change="handleTextEdit">{{ data.language == "fr" ? data.page.content.text.fr : data.page.content.text.en }}</textarea>
+
+            <input type="textarea" id="text"
+            :value="data.language == 'fr' ? data.page.content.text.fr : data.page.content.text.en"
+            @change="handleTextEdit" />
+
         <select id="next" v-model="data.page.content.next">
             <option selected></option>
             <option v-for="(page, index) in data.pages" :key="index" :value="page.id">{{
