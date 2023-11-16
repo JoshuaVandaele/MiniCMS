@@ -1,35 +1,68 @@
-# portcms
+# PortCMS
 
-This template should help get you started developing with Vue 3 in Vite.
+PortCMS est un CMS simple et léger, basé sur VueJS.
 
-## Recommended IDE Setup
+## Table des matières
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- [PortCMS](#portcms)
+  - [Table des matières](#table-des-matières)
+  - [Prérequis](#prérequis)
+  - [Installation](#installation)
+  - [Utilisation](#utilisation)
+    - [Mode Développement](#mode-développement)
+    - [Mode Production](#mode-production)
+  - [Auteurs](#auteurs)
+  - [License](#license)
 
-## Customize configuration
+## Prérequis
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- git
+- nodejs
+- npm
 
-## Project Setup
+## Installation
 
-```sh
-npm install
+```bash
+git clone https://github.com/JoshuaVandaele/MiniCMS.git
+cd PortCMS
+npm i
 ```
 
-### Compile and Hot-Reload for Development
+## Utilisation
 
-```sh
+### Mode Développement
+
+Pour lancer le serveur de développement, utilisez la commande suivante :
+
+```bash
 npm run dev
 ```
 
-### Compile and Minify for Production
+### Mode Production
 
-```sh
+Pour build le projet, utilisez la commande suivante :
+
+```bash
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+Cette commande va créer un dossier `dist` contenant les fichiers nécessaires au serveur de production.
 
-```sh
-npm run lint
+Pour lancer le serveur de production, utilisez la commande suivante :
+
+```bash
+npm run serve
 ```
+
+Serve est un serveur de production basé sur [Express](https://expressjs.com/), mais vous pouvez utiliser n'importe quel serveur de votre choix.
+
+## Auteurs
+
+- [Joshua Vandaele](https://vandaele.software)
+- [Jeremy Bodart](https://github.com/SilverSdt)
+- [Kevin Sailly](https://github.com/LJ5O)
+- [Camille Vasseur](https://github.com/IchiyaGentleman)
+
+## License
+
+Le projet est sous la license [GPL](./LICENSE).
